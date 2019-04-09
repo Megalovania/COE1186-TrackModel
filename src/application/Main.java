@@ -18,7 +18,7 @@ public class Main {
 		// Each number corresponds to a module below.
 	private static boolean ENABLE_1 = true;
 	private static boolean ENABLE_2 = true;
-	private static boolean ENABLE_3 = false;
+	private static boolean ENABLE_3 = true;
 	private static boolean ENABLE_4 = true;
 	private static boolean ENABLE_5 = true;
 	private static boolean ENABLE_6 = true;
