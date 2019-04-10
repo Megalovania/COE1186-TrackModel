@@ -30,6 +30,8 @@ public class Main {
 	public static void main(String[] args) {
 		// Singleton References
 		TrackModelSingleton 		tckModSin = 	TrackModelSingleton.getInstance();
+		
+		ClockSingleton clock = ClockSingleton.getInstance();
 
 
 		// Calling Thread which starts the FX UI
@@ -47,14 +49,14 @@ public class Main {
 
 			@Override
 			public void run() {
-				update(tckModSin);
+				update(tckModSin, clock);
 			}
 		}, 0, 1, TimeUnit.SECONDS); // Determines update frequency (1 sec atm)
 
 	}
 
 	// calls each singleton's update() method
-	private static void update(TrackModelSingleton tckModSin) {
+	private static void update(TrackModelSingleton tckModSin, ClockSingleton clock) {
 		// call singleton update methods
 		
 		if(DEBUG && !printedUpdateDebugs && !(ENABLE_1 && ENABLE_2 && ENABLE_3 && ENABLE_4 && ENABLE_5 && ENABLE_6) ) System.err.println("WARNING: Some updates Have been disabled");
@@ -66,7 +68,7 @@ public class Main {
 			if(ENABLE_3) tckModSin.update();
 			if(DEBUG && !printedUpdateDebugs) System.out.println("DEBUG: 3 - Track Model update worked");
 			
-			
+			clock.update();
 		} catch (Exception e) {
 			System.err.println();
 			StackTraceElement[] elements = e.getStackTrace();  
