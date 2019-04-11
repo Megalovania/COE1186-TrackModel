@@ -221,9 +221,9 @@ public class TrackModelSingleton implements TrackModelInterface {
 	@Override
 	public void setCrossing(String lineName, int blockID, boolean crossingOn) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 	// ====Train Model Methods====
 	// TODO: NOTE: could the train deletion method impair ID checks?
 	@Override
@@ -767,13 +767,17 @@ public class TrackModelSingleton implements TrackModelInterface {
 		return currentLine.getStation(stationName);
 	}
 
-	public TrackSection getCurrentSection() {
+	public TrackSection getSection(char sectionID) {
 		TrackLine currentLine = track.get(currentLineName);
-		TrackBlock currentBlock = currentLine.getBlock(currentBlockID);
-		char sectionID = currentBlock.getSectionID();
 		return currentLine.getSection(sectionID);
 	}
-	
+
+	public void setCurrentSection(char sectionID) {
+		TrackLine currentLine = track.get(currentLineName);
+		TrackSection section = currentLine.getSection(sectionID);
+		currentBlockID = section.getFirstBlockID();
+	}
+
 	public Map<Integer, TrainLocation> getTrainMap() {
 		return trainLocations;
 	}
@@ -822,8 +826,12 @@ public class TrackModelSingleton implements TrackModelInterface {
 
 	}
 
-	public Collection<TrackSection> getLineSection(String lineName) {
+	public Collection<TrackSection> getLineSections(String lineName) {
 		return track.get(lineName).getSections();
+	}
+
+	public Collection<TrackStation> getLineStations(String lineName) {
+		return track.get(lineName).getStations();
 	}
 
 	private TrackLine readLineFile(XSSFWorkbook workbook) {
@@ -1024,7 +1032,5 @@ public class TrackModelSingleton implements TrackModelInterface {
 		System.out.println("ID: " + junction.getID() + " Entry: " + junction.getEntryPoint() + " isSwitch: "
 				+ junction.isSwitch());
 	}
-
-
 
 }
