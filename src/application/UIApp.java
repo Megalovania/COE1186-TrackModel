@@ -42,14 +42,14 @@ public class UIApp extends Application {
 			Stage test1Stage = new Stage();
 			Parent test1Root = FXMLLoader.load(getClass().getResource("./Test/TrackController.fxml"));
 			test1Stage.setTitle("Test Track Controller");
-			Scene test1Scene = new Scene(test1Root, 600, 400); // NOTE: Change last two ints to make window bigger
+			Scene test1Scene = new Scene(test1Root, 650, 450); // NOTE: Change last two ints to make window bigger
 			test1Stage.setScene(test1Scene);
 			if(ENABLE_3) test1Stage.show();
 			
 			Stage test2Stage = new Stage();
 			Parent test2Root = FXMLLoader.load(getClass().getResource("./Test/TrainModel.fxml"));
 			test2Stage.setTitle("Test Train Controller");
-			Scene test2Scene = new Scene(test2Root, 600, 400); // NOTE: Change last two ints to make window bigger
+			Scene test2Scene = new Scene(test2Root, 650, 450); // NOTE: Change last two ints to make window bigger
 			test2Stage.setScene(test2Scene);
 			if(ENABLE_3) test2Stage.show();
 			
