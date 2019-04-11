@@ -218,6 +218,12 @@ public class TrackModelSingleton implements TrackModelInterface {
 
 	}
 
+	@Override
+	public void setCrossing(String lineName, int blockID, boolean crossingOn) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	// ====Train Model Methods====
 	// TODO: NOTE: could the train deletion method impair ID checks?
 	@Override
@@ -660,7 +666,7 @@ public class TrackModelSingleton implements TrackModelInterface {
 
 	@Override
 	public double getTrainSuggestedSpeed(int trainID) throws TrackCircuitFailureException {
-		if (trainLocations.containsKey(trainID))
+		if (!trainLocations.containsKey(trainID))
 			throw new IllegalArgumentException("Train: " + trainID + " not found");
 
 		String lineName = trainLocations.get(trainID).getLineName();
@@ -676,7 +682,7 @@ public class TrackModelSingleton implements TrackModelInterface {
 
 	@Override
 	public int getTrainBlockAuthority(int trainID) throws TrackCircuitFailureException {
-		if (trainLocations.containsKey(trainID))
+		if (!trainLocations.containsKey(trainID))
 			throw new IllegalArgumentException("Train: " + trainID + " not found");
 
 		String lineName = trainLocations.get(trainID).getLineName();
@@ -761,6 +767,13 @@ public class TrackModelSingleton implements TrackModelInterface {
 		return currentLine.getStation(stationName);
 	}
 
+	public TrackSection getCurrentSection() {
+		TrackLine currentLine = track.get(currentLineName);
+		TrackBlock currentBlock = currentLine.getBlock(currentBlockID);
+		char sectionID = currentBlock.getSectionID();
+		return currentLine.getSection(sectionID);
+	}
+	
 	public Map<Integer, TrainLocation> getTrainMap() {
 		return trainLocations;
 	}
@@ -1011,5 +1024,7 @@ public class TrackModelSingleton implements TrackModelInterface {
 		System.out.println("ID: " + junction.getID() + " Entry: " + junction.getEntryPoint() + " isSwitch: "
 				+ junction.isSwitch());
 	}
+
+
 
 }
