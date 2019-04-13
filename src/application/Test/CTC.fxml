@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="482.0" prefWidth="645.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Test.CTCController">
+   <children>
+      <Button layoutX="442.0" layoutY="77.0" mnemonicParsing="false" onAction="#getLineBoarders" text="Get Line Boarders" />
+      <Label layoutX="35.0" layoutY="29.0" text="CTC Test" />
+      <Button layoutX="423.0" layoutY="130.0" mnemonicParsing="false" onAction="#getTicketSales" text="Get Station Ticket Sales" />
+      <TextField fx:id="lineName" layoutX="191.0" layoutY="77.0" />
+      <TextField fx:id="stationName" layoutX="191.0" layoutY="130.0" />
+      <Label layoutX="104.0" layoutY="82.0" text="Line Name" />
+      <Label layoutX="84.0" layoutY="135.0" text="Station Name" />
+      <Label layoutX="62.0" layoutY="220.0" text="Total Line Boarders: " />
+      <Label fx:id="totalBoarders" layoutX="197.0" layoutY="220.0" text="--" />
+      <Label layoutX="64.0" layoutY="241.0" text="Scheduled Station Boarders: " />
+      <Label layoutX="64.0" layoutY="262.0" text="Scheduled Station Alighters: " />
+      <Label fx:id="scheduledBoarders" layoutX="254.0" layoutY="241.0" text="--" />
+      <Label fx:id="scheduledAlighters" layoutX="254.0" layoutY="262.0" text="--" />
+   </children>
+</AnchorPane>

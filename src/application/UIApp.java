@@ -53,6 +53,13 @@ public class UIApp extends Application {
 			test2Stage.setScene(test2Scene);
 			if(ENABLE_3) test2Stage.show();
 			
+			Stage test3Stage = new Stage();
+			Parent test3Root = FXMLLoader.load(getClass().getResource("./Test/CTC.fxml"));
+			test3Stage.setTitle("Test Train Controller");
+			Scene test3Scene = new Scene(test3Root, 625, 350); // NOTE: Change last two ints to make window bigger
+			test3Stage.setScene(test3Scene);
+			if(ENABLE_3) test3Stage.show();
+			
 
 
 			// If we have time, we'll start adding styles using the line below
