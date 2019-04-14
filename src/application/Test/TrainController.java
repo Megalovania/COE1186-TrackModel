@@ -71,7 +71,6 @@ public class TrainController {
 			double displacement = Double.parseDouble(amount.getText());
 			mySin.updateTrainDisplacement(train, displacement);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -85,7 +84,6 @@ public class TrainController {
 			int capacityNum = Integer.parseInt(capacity.getText());
 			mySin.stationPassengerExchange(train, currentPassengers, capacityNum);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -147,7 +145,6 @@ public class TrainController {
 			}
 
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
