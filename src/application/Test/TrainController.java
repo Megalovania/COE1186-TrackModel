@@ -4,6 +4,7 @@ import java.text.DecimalFormat;
 
 import application.TrackModel.TrackCircuitFailureException;
 import application.TrackModel.TrackModelSingleton;
+import application.TrackModel.TrackPowerFailureException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -134,10 +135,14 @@ public class TrainController {
 
 			if (mySin.trainBlockHasLight(train)) {
 				hasLight.setText("Yep");
-				if (mySin.trainBlockLightIsGreen(train)) {
-					lightColor.setText("green");
-				} else {
-					lightColor.setText("red");
+				try {
+					if (mySin.trainBlockLightIsGreen(train)) {
+						lightColor.setText("green");
+					} else {
+						lightColor.setText("red");
+					}
+				} catch (TrackPowerFailureException e) {
+					lightColor.setText("Light has no Power");
 				}
 			} else {
 				hasLight.setText("Nope");
