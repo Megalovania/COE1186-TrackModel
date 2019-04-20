@@ -2,6 +2,7 @@ package application.Test;
 
 import application.TrackModel.TrackCircuitFailureException;
 import application.TrackModel.TrackModelSingleton;
+import application.TrackModel.TrackPowerFailureException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -47,10 +48,10 @@ public class TrackController {
 				occupancy.setText("Yep");
 			else
 				occupancy.setText("Nope");
-			
-		} catch(TrackCircuitFailureException ex) {
+
+		} catch (TrackCircuitFailureException ex) {
 			occupancy.setText("Track Circuit Broken (Oc)");
-		}catch (Exception e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -65,9 +66,9 @@ public class TrackController {
 			int auth = Integer.parseInt(value.getText());
 
 			mySin.setAuthority(line, blockID, auth);
-		} catch(TrackCircuitFailureException ex) {
+		} catch (TrackCircuitFailureException ex) {
 			occupancy.setText("Track Circuit Broken (Au)");
-		}catch (Exception e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -107,7 +108,7 @@ public class TrackController {
 				ctrlAuth = true;
 
 			mySin.setControlAuthority(line, blockID, ctrlAuth);
-		} catch(TrackCircuitFailureException ex) {
+		} catch (TrackCircuitFailureException ex) {
 			occupancy.setText("Track Circuit Broken (CA)");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -129,6 +130,8 @@ public class TrackController {
 				lightGreen = true;
 
 			mySin.setLightStatus(line, blockID, lightGreen);
+		} catch (TrackPowerFailureException e) {
+			occupancy.setText("Light has no Power");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -144,7 +147,7 @@ public class TrackController {
 			int speed = Integer.parseInt(value.getText());
 
 			mySin.setSuggestedSpeed(line, blockID, (int) speed);
-		} catch(TrackCircuitFailureException ex) {
+		} catch (TrackCircuitFailureException ex) {
 			occupancy.setText("Track Circuit Broken (Sp)");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
